@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'books.apps.BooksConfig',
     'bootstrap4',
     'languages',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +123,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL = 'profile'
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'login'

@@ -1,0 +1,12 @@
+{% extends 'books/base.html'%}
+{% block content%}
+{% load crispy_forms_tags %}
+<h1>Please Login</h1>
+<br>
+<form method="post">
+{% csrf_token %}
+{{form|crispy}}
+ <br>   <button type="submit">login</button>
+ If you don't have an account please<a href="{% url 'Registration_home'%}" > Sign up</a>
+</form>
+{% endblock content %}

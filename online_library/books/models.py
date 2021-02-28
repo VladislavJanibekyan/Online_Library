@@ -9,6 +9,7 @@ GROUP_CHOICES = (
 )
 # Create your models here.
 class Book(models.Model):
+
     title = models.CharField(max_length=40)
     author = models.CharField(max_length=30)
     description = models.TextField()
@@ -18,6 +19,7 @@ class Book(models.Model):
     age_group = models.IntegerField(choices=GROUP_CHOICES)
     downloaded_times = models.IntegerField()
     rate = models.FloatField()
+    book_image = models.ImageField(upload_to='book_cover_iamge', default="image.png")
     pdf_file = models.FileField(default=True)
 
 
@@ -25,3 +27,5 @@ class Book(models.Model):
         return f"{self.title}|-|{self.category}|-|{self.author}"
 
 
+class UserProfile(models.Model):
+    pass

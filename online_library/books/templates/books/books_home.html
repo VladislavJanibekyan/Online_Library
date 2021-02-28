@@ -1,7 +1,12 @@
 {% extends 'books/base.html' %}
 {% block content %}
 <h1 align="center"> Online Library </h1>
+<div>
+    <ul class="">
 {% for book in books%}
-{{book}}
-{% endfor %}
+        <li><a href="{% url 'book_view' book.id %}"> {{book}}</a> <button>download</button></li>
+    {% endfor %}
+    </ul>
+</div>
+
 {% endblock %}
