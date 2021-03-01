@@ -1,5 +1,24 @@
 {% extends 'books/base.html'%}
 {% block content%}
+{% load crispy_forms_tags %}
 
-Profile
+<h1 align="center">Your Profile info</h1>
+    <p align="center">
+    <br>
+
+    <img src='{{ prof.avatar.url }}' width="200px" alt="Avatar">
+    <br>
+First name: {{ prof.first_name }}
+    <br>
+    Last name: {{ prof.last_name }}
+    <br>
+    Age: {{ prof.age }}
+    <br>
+    Username: {{ request.user.username }}
+    <br>
+    Books: {{ prof.books.all.first }}
+    <br>
+    <a href="{% url 'profileupdate' %}" > <button>Update</button></a>
+    </p>
+
 {% endblock content %}

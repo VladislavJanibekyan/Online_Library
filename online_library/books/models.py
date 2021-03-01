@@ -27,5 +27,6 @@ class Book(models.Model):
         return f"{self.title}|-|{self.category}|-|{self.author}"
 
 
-class UserProfile(models.Model):
-    pass
+
+
+

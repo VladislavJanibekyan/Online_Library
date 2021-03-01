@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
-from .forms import UserCreate
+from django.shortcuts import render, redirect, get_object_or_404
+from .forms import UserCreate, Profile
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from .models import UserProfile
 
 
 
@@ -24,4 +25,16 @@ def user_login(request):
     return render(request, 'registration/login.html')
 @login_required
 def profile(request):
-    return render(request, 'registration/profile.html')
+    id_=request.user.id
+    userprof = get_object_or_404(UserProfile, user=id_)
+    return render(request, 'registration/profile.html', {'prof': userprof})
+
+@login_required
+def profile_update(request):
+    userprof = Profile(instance=request.user.userprofile)
+    if request.method == "POST":
+        userprof = Profile(request.POST, request.FILES, instance=request.user.userprofile)
+        if userprof.is_valid():
+            userprof.save()
+            return redirect('profile')
+    return render(request, 'registration/profile_update.html', {'form': userprof})
