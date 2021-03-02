@@ -1,9 +1,18 @@
 {% extends 'books/base.html' %}
 {% block content %}
-<h1 align="center"> Online Library </h1>
+<div align="center">
+<h1> Online Library </h1>
 <h2>{{book.title}}</h2>
-    <img src='{{ book.book_image.url }}' width="200px">
+    <img src='{{ book.book_image.url }}' width="200px" style="border-radius: 0%">
     <br>
     <h3>Description</h3>
-{{book.description}}
+        <div style="width: 500px">
+        <p style="font-size: 15px; text-align: center" >
+        {{book.description}}
+        </p>
+        </div>
+
+    <p>File:<a href="{{ book.pdf_file.url }}" download="{{ book.pdf_file.url }}"> {{ book.pdf_file }}
+        <button>download</button></a></p>
+</div>
 {% endblock %}

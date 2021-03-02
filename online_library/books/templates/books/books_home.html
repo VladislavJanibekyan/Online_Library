@@ -4,7 +4,7 @@
 <div>
     <ul class="">
 {% for book in books%}
-        <li><a href="{% url 'book_view' book.id %}"> {{book}}</a> <button>download</button></li>
+    <li><a href="{% url 'book_view' book.id %}"> {{book}}<button>more</button></a></li>
     {% endfor %}
     </ul>
 </div>

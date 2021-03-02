@@ -20,7 +20,7 @@ class Book(models.Model):
     downloaded_times = models.IntegerField()
     rate = models.FloatField()
     book_image = models.ImageField(upload_to='book_cover_image', default="image.png")
-    pdf_file = models.FileField(default=True)
+    pdf_file = models.FileField(default=True, upload_to='media')
 
 
     def __str__(self):

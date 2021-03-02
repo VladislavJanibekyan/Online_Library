@@ -12,4 +12,4 @@ class UserProfile(models.Model):
     books = models.ManyToManyField(Book, default=None)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.last_name} "

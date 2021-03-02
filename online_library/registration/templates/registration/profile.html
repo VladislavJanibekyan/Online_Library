@@ -15,9 +15,7 @@ First name: {{ prof.first_name }}
     Age: {{ prof.age }}
     <br>
     Username: {{ request.user.username }}
-    <br>
-    Books: {{ prof.books.all.first }}
-    <br>
+  <br>
     <a href="{% url 'profileupdate' %}" > <button>Update</button></a>
     </p>
 
