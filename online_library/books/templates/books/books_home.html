@@ -1,6 +1,12 @@
 {% extends 'books/base.html' %}
 {% block content %}
 <h1 align="center"> Online Library </h1>
+<form action="{% url 'search_results' %}" method="get" >
+  <input name="q" type="text" placeholder="Search...">
+    <button> Ok </button>
+
+</form>
+
 <div>
     <ul class="">
 {% for book in books%}
