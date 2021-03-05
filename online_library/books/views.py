@@ -12,7 +12,7 @@ from django.contrib import messages
 
 class SearchResultsView(ListView):
     model = Book
-    template_name = 'search_results.html'
+    template_name = 'books/search_results.html'
 
     def get_queryset(self):
         query = self.request.GET.get('q')
