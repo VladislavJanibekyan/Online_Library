@@ -3,7 +3,7 @@ from .forms import UserCreate, Profile
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
-
+from django.contrib import messages
 
 
 # Create your views here.
@@ -17,6 +17,7 @@ def register(request):
             password = form.data.get('password1')
             user = authenticate(request, username=username, password=password)
             if user is not None:
+                messages.success(request, "Your account was successfully created.")
                 login(request, user)
             return redirect('profile')
     return render(request, 'registration/register.html', {'form': form})
@@ -36,5 +37,6 @@ def profile_update(request):
         userprof = Profile(request.POST, request.FILES, instance=request.user.userprofile)
         if userprof.is_valid():
             userprof.save()
+            messages.success(request, "Profile was successfully updated.")
             return redirect('profile')
     return render(request, 'registration/profile_update.html', {'form': userprof})
