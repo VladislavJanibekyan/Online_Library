@@ -3,16 +3,38 @@
 <h1 align="center"> Online Library </h1>
 <form action="{% url 'search_results' %}" method="get" >
   <input name="q" type="text" placeholder="Search...">
-    <button> Ok </button>
+    <button> Search </button>
 
 </form>
 
+<br>
 <div>
-    <ul class="">
-{% for book in books%}
-    <li><a href="{% url 'book_view' book.id %}"> {{book}}<button>more</button></a></li>
-    {% endfor %}
-    </ul>
-</div>
 
+<ul>   <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Language</th>
+            <th>Publish year</th>
+            <th>Age group</th>
+            <th>...</th>
+        </tr>
+        {% for book in books%}
+        <tr>
+
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.category}}</td>
+            <td>{{book.language}}</td>
+            <td>{{book.publish_year}}</td>
+            <td>{{book.get_age_group_display}}</td>
+            <td><a href="{% url 'book_view' book.id %}"> more</a></td>
+
+        </tr>
+        {% endfor%}
+    </table>
+
+</ul>
+    </div>
 {% endblock %}

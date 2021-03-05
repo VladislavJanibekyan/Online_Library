@@ -1,0 +1,36 @@
+{% extends 'books/base.html' %}
+{% block content %}
+<h1>Search Results</h1>
+    <form action="{% url 'search_results' %}" method="get" >
+  <input name="q" type="text" placeholder="Search...">
+    <button> Search </button>
+    </form>
+    <br>
+<ul>
+<table border="2px" style="font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;">
+<tr>
+    <th>Title</th>
+    <th >Author</th>
+    <th >Category</th>
+    <th >Publish year</th>
+    <th >Language</th>
+    <th >Age group</th>
+    <th >....</th>
+</tr>
+    {% for book in object_list %}
+<tr>
+
+    <td >{{ book.title }}</td>
+        <td >{{ book.author }}</td>
+        <td >{{ book.category }}</td>
+        <td >{{ book.publish_year }}</td>
+        <td >{{ book.language }}</td>
+        <td>{{ book.get_age_group_display }}</td>
+        <td ><a href="{% url 'book_view' book.id %}">more</a></td>
+</tr>
+{% endfor %}
+</table>
+    </ul>
+{% endblock %}
