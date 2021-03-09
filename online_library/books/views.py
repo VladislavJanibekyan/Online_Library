@@ -50,7 +50,17 @@ def home(request):
         users = paginator.page(paginator.num_pages)
 
     return render(request, 'books/books_home.html', {'books': book[1:6]})
+def rate_1(request, rate,pk):
+    book = Book.objects.all()
+    if request.method =="GET":
+        specific_book = get_object_or_404(Book, pk=pk)
+        specific_book.rate_times += 1
+        specific_book.rate += rate
+        specific_book.rate_total = specific_book.rate / specific_book.rate_times
+        specific_book.save()
 
+
+    return render(request, 'books/books_home.html', {'books': book[1:6]})
 
 def about(request):
     return render(request, 'books/about.html')
@@ -64,7 +74,8 @@ def book_download(request, pk):
     specific_book = get_object_or_404(Book, pk=pk)
 
     if request.method == "GET":
-
+        specific_book.downloaded_times += 1
+        specific_book.save()
         user_profile = get_object_or_404(UserProfile, id=request.user.userprofile.id)
         user_profile.books.add(specific_book)
         user_profile.save()

@@ -17,8 +17,12 @@
 					<div class="about-me-single-slide">
 						<h2 class="universal-h2 universal-h2-bckg">{{book.title}}</h2>
 						<p> {{book.description}}</p>
-                        <p>File:<a href="{{ book.pdf_file.url }}" download="{{ book.pdf_file.url }}">
-                        <button class="brand-button">download</button></a></p>
+
+
+                        <p>File:<a href="{{ book.pdf_file.url }} " >
+                            <button class="brand-button">read</button></a>
+                            <a href="{% url 'book_download' book.id%}" >
+                        <button class="brand-button">click here for download</button></a></p>
 					</div>
 				</div>
 			</div>
@@ -26,31 +30,4 @@
 
 		<div class="about-me-bckg"></div>
 	</section>
-	<!-- Book view end -->
-
-<!-- old code
-<div align="center">
-<h1> Online Library </h1>
-<h2>{{book.title}}</h2>
-    <img src='{{ book.book_image.url }}' width="200px" style="border-radius: 0%">
-    <br>
-    <h3>Description</h3>
-        <div style="width: 500px">
-        <p style="font-size: 15px; text-align: center" >
-        {{book.description}}
-        </p>
-        </div>
-
-<<<<<<< Updated upstream
-    <p>File:<a href="{{ book.pdf_file.url }} " >
-        <button>read</button></a>
-<a href="{% url 'book_download' book.id %}" >
-        <button>click here for download</button></a></p>
-</div>
-=======
-    <p>File:<a href="{{ book.pdf_file.url }}" download="{{ book.pdf_file.url }}">
-        <button>download</button></a></p>
-</div>-->
-
-
 {% endblock %}

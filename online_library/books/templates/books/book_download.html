@@ -1,18 +1,21 @@
 {% extends 'books/base.html' %}
 {% block content %}
-    <h1 align="center"> Online Library </h1>
-<div align="left">
+			<h2 class="universal-h2 universal-h2-bckg">{{book.title}}</h2>
 
-<h2>{{book.title}}</h2>
+
+<div align="left">
+<center>
+
+
     <img src='{{ book.book_image.url }}' width="200px" style="border-radius: 0%">
-    File:
+    <br>
+    <br>
+<h3 >Downloaded times {{ book.downloaded_times }}</h3>
 <a href="{% url 'book_download' book.id %}" >
-        <button style="padding: 10px 30px;
-  font-size: 1.7rem;
-  font-weight: 300;
-  border-radius: 8px;
-  :hover {
-  color: white;
-  text-decoration: none;}">download</button></a>
+    <p><a href="{{ book.pdf_file.url }}" download="{{ book.pdf_file.url }}">
+                       <button class="brand-button">download</button></a></p>
+</a>
+</center>
 </div>
+    <br>
 {% endblock %}

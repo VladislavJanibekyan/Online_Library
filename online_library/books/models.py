@@ -21,6 +21,8 @@ class Book(models.Model):
     age_group = models.CharField(max_length=5, choices=GROUP_CHOICES)
     downloaded_times = models.IntegerField()
     rate = models.FloatField()
+    rate_times = models.IntegerField()
+    rate_total = models.FloatField()
     book_image = models.ImageField(upload_to='book_cover_image', default="image.png")
     pdf_file = models.FileField(default=True, upload_to='media')
 
@@ -37,6 +39,7 @@ class Book(models.Model):
             output_size=(300,300)
             img.thumbnail(output_size)
             img.save(self.book_image.path)
+
 
 
 

@@ -46,7 +46,7 @@
       font-size: 30px; } }
 
 .universal-h2-bckg {
-  background-image: url("../images/double-line.svg");
+
   background-repeat: no-repeat;
   background-position: center bottom; }
 
@@ -249,7 +249,7 @@
 
 .about-me-bckg {
   position: absolute;
-  background-image: url("./media/website_images/about-me-bckg.jpg");
+
   background-position: center;
   background-size: cover;
   height: 500px;
@@ -400,7 +400,7 @@
     margin-bottom: 50px;
     padding-bottom: 20px; }
     .universal-h2-bckg {
-    background-image: url(./media/website_images/double-line.svg);
+    background-image: url(/media/website_images/double-line.svg);
     background-repeat: no-repeat;
     background-position: center bottom;}
   .fh5co-books .books-brand-button {
