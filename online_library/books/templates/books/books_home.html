@@ -1,13 +1,223 @@
 {% extends 'books/base.html' %}
 {% block content %}
-<h1 align="center"> Online Library </h1>
-<form action="{% url 'search_results' %}" method="get" >
-  <input name="q" type="text" placeholder="Search...">
+
+	<section class="fh5co-top-banner">
+		<div class="top-banner__inner site-container">
+			<div class="top-banner__image">
+				<img src="./media/banner_image2.jpg" alt="library image">
+			</div>
+			<div class="top-banner__text">
+				<div class="top-banner__text-up">
+					<h2 class="top-banner__h2">Online Library</h2>
+				</div>
+				<div class="top-banner__text-down">
+					<span class="brand-span">Find a book by title</span>
+				</div>
+					<form action="{% url 'search_results' %}" method="get" class="contact-form">
+				    <input name="q" type="text" placeholder="Search...">
+				<button class="brand-button">Search > </button>
+			</div>
+		</div>
+	</section>
 
 
-    {{ form.as_table }}
-    <button> Search </button>
-</form>
+	<!-- Most Popular Books -->
+
+	<section class="fh5co-books">
+		<div class="site-container">
+			<br>
+			<h2 class="universal-h2 universal-h2-bckg">Most Popular Books</h2>
+			<ul>
+				<li>
+            {% for book in books%}
+			<div class="books">
+				<div class="single-book">
+					<a href="{% url 'book_view' book.id %}" class="single-book__img">
+						<img src="{{ book.book_image.url }}" alt="single book and cd">
+						<div class="single-book_download">
+							<img src="{{ book.book_image.url }}" alt="book image">
+						</div>
+					</a>
+					<h4 class="single-book__title">{{book.title}}</h4>
+					<span class="single-book__price">{{book.author}}</span>
+
+
+					<!-- star rating
+					<div class="rating">
+						<span>&#9734;</span>
+						<span>&#9734;</span>
+						<span>&#9734;</span>
+						<span>&#9734;</span>
+						<span>&#9734;</span>
+					</div>
+					 star rating end -->
+				</div>
+                        {% endfor%}
+			</div>
+				</li>
+			</ul>
+
+		</div>
+	</section>
+
+
+
+
+
+
+<section class="fh5co-books">
+		<div class="site-container">
+			<h2 class="universal-h2 universal-h2-bckg">Browse by Category</h2>
+			<div class="books">
+				<div class="single-book">
+					<a href="#" class="single-book__img">
+						<img src="./media/website_images/Science_fiction.svg" alt="single book and cd">
+
+					</a>
+					<span class="single-book__price">Science Fiction</span>
+				</div>
+
+				<div class="single-book">
+					<a href="#" class="single-book__img">
+						<img src="./media/website_images/romance.svg" alt="single book and cd">
+
+					</a>
+					<span class="single-book__price">Romance</span>
+				</div>
+
+				<div class="single-book">
+					<a href="#" class="single-book__img">
+						<img src="./media/website_images/recipe.svg" alt="single book and cd">
+
+					</a>
+
+					<span class="single-book__price">Recipe</span>
+				</div>
+
+				<div class="single-book">
+					<a href="#" class="single-book__img">
+						<img src="./media/website_images/children.svg" alt="single book and cd">
+
+					</a>
+					<span class="single-book__price">Children</span>
+				</div>
+
+				<div class="single-book">
+					<a href="#" class="single-book__img">
+						<img src="./media/website_images/biography.svg" alt="single book and cd">
+
+					</a>
+					<span class="single-book__price">biography</span>
+				</div>
+
+				<div class="single-book">
+					<a href="#" class="single-book__img">
+						<img src="./media/website_images/art.svg" alt="single book and cd">
+
+					</a>
+					<span class="single-book__price">Art</span>
+				</div>
+
+				<div class="single-book">
+					<a href="#" class="single-book__img">
+						<img src="./media/website_images/fantasy.svg" alt="single book and cd">
+
+					</a>
+					<span class="single-book__price">Fantasy</span>
+				</div>
+
+
+
+
+
+
+
+
+
+
+	<!-- Recommended in  Romance -->
+	<section class="fh5co-books">
+		<div class="site-container">
+			<br>
+			<br>
+			<h2 class="universal-h2 universal-h2-bckg">Most popular Romances</h2>
+			<ul>
+				<li>
+            {% for book in books%}
+			<div class="books">
+				<div class="single-book">
+					<a href="{% url 'book_view' book.id %}" class="single-book__img">
+						<img src="{{ book.book_image.url }}" alt="single book and cd">
+						<div class="single-book_download">
+							<img src="{{ book.book_image.url }}" alt="book image">
+						</div>
+					</a>
+					<h4 class="single-book__title">{{book.title}}</h4>
+					<span class="single-book__price">{{book.author}}</span>
+
+
+					<!-- star rating
+					<div class="rating">
+						<span>&#9734;</span>
+						<span>&#9734;</span>
+						<span>&#9734;</span>
+						<span>&#9734;</span>
+						<span>&#9734;</span>
+					</div>
+					<!-- star rating end -->
+				</div>
+                        {% endfor%}
+			</div>
+				</li>
+			</ul>
+
+		</div>
+	</section>
+
+	<!-- Most popular in Romance-->
+
+<!-- Most Popular in Science Fiction -->
+	<section class="fh5co-books">
+		<div class="site-container">
+			<br>
+			<h2 class="universal-h2 universal-h2-bckg">Most Popular In Science Fiction</h2>
+			<ul>
+				<li>
+            {% for book in books%}
+			<div class="books">
+				<div class="single-book">
+					<a href="{% url 'book_view' book.id %}" class="single-book__img">
+						<img src="{{ book.book_image.url }}" alt="single book and cd">
+						<div class="single-book_download">
+							<img src="{{ book.book_image.url }}" alt="book image">
+						</div>
+					</a>
+					<h4 class="single-book__title">{{book.title}}</h4>
+					<span class="single-book__price">{{book.author}}</span>
+
+
+					<!-- star rating
+					<div class="rating">
+						<span>&#9734;</span>
+						<span>&#9734;</span>
+						<span>&#9734;</span>
+						<span>&#9734;</span>
+						<span>&#9734;</span>
+					</div>
+					star rating end -->
+				</div>
+                        {% endfor%}
+			</div>
+				</li>
+			</ul>
+
+		</div>
+	</section>
+
+	<!-- Most Popular in Science Fiction-->
+
+
+<!-- old books table
 
 <br>
 <div>
@@ -36,9 +246,9 @@
         </tr>
         {% endfor%}
     </table>
-
 </ul>
     </div>
+<<<<<<< Updated upstream
 {% if users.has_other_pages %}
   <ul class="pagination">
     {% if users.has_previous %}
@@ -60,4 +270,69 @@
     {% endif %}
   </ul>
 {% endif %}
+=======
+    -->
+
+
+
+
+				<!-- Social -->
+	<section class="fh5co-social">
+		<div class="site-container">
+			<div class="social">
+				<h5></h5>
+				<div class="social-icons">
+					<a href="#" target="_blank"><img src="./media/website_images/social-twitter.png" alt="social icon"></a>
+					<a href="#" target="_blank"><img src="./media/website_images/social-pinterest.png" alt="social icon"></a>
+					<a href="#" target="_blank"><img src="./media/website_images/social-youtube.png" alt="social icon"></a>
+
+				</div>
+				<h5></h5>
+			</div>
+		</div>
+	</section>
+	<!-- Social -->
+
+	<!-- Footer -->
+	<footer class="site-footer">
+		<div class="site-container">
+			<div class="footer-inner">
+				<div class="footer-info">
+					<div class="footer-info__left">
+
+					</div>
+					<div class="footer-info__right">
+						<h5>Get In Touch</h5>
+						<p class="footer-phone">Phone: +958734902847</p>
+						<p>Email : Jhone@Example.com</p>
+						<div class="social-icons">
+							<a href="#" target="_blank"><img src="./media/website_images/social-twitter.png" alt="social icon"></a>
+							<a href="#" target="_blank"><img src="./media/website_images/social-pinterest.png" alt="social icon"></a>
+							<a href="#" target="_blank"><img src="./media/website_images/social-youtube.png" alt="social icon"></a>
+						</div>
+					</div>
+				</div>
+				<div class="footer-contact-form">
+					<h5>Contact Form</h5>
+					<form class="contact-form">
+						<div class="contact-form__input">
+							<input type="text" name="name" placeholder="Name">
+							<input type="email" name="email" placeholder="Email">
+						</div>
+						<textarea></textarea>
+						<input type="submit" name="submit" value="Submit" class="submit-button">
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</footer>
+	<!-- Footer end -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/slick.min.js"></script>
+	<script src="js/main.js"></script>
+
+
+
+
 {% endblock %}

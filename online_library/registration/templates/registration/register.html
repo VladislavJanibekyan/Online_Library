@@ -1,14 +1,57 @@
 {% extends 'books/base.html' %}
 {% block content%}
 {% load crispy_forms_tags %}
-<h1 align="center"> Please Sign Up  </h1>
-<br>
-<form method="post">
+
+	<!-- nav bar-->
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="{% url 'books_home' %}">
+        		<img src="media/logo/logo.svg" alt="Logo" style="width:100px;">
+    		    </a>
+     		</div>
+			<ul class="nav navbar-nav">
+				<li class="active" style="text-align: center"><a href="{% url 'books_home'%}">Home</a></li>
+     			 <li><a href="{% url 'about'%}">About us</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+    		  {% if not request.user.is_authenticated %}
+   			   <li><a href="{% url 'Registration_home' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			   <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      		  {% else %}
+     		   <li><a href="{% url 'profile' %}"><span class="glyphicon glyphicon-user"></span> {{request.user.username}}</a></li>
+   			   <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+     		   {% endif %}
+  			 </ul>
+		 </div>
+	</nav>
+
+<!--Nav bar end-->
+
+	<footer class="site-footer">
+		<div class="site-container">
+			<div class="footer-inner">
+               	<div class="footer-contact-form">
+					<h5>Please Sign Up</h5>
+					<form method="post" class="contact-form">
+                       {% csrf_token %}
+						{{form|crispy}}
+                       <br>
+                   		<input type="submit" name="submit" value="Submit" class="submit-button">
+                         <br> If you already have an account please <a href="{% url 'login' %}"> Login</a>
+					</form>
+				</div>
+			</div>
+		</div>
+    </footer>
+
+
+       <!--<form method="post">
 {% csrf_token %}
 {{form|crispy}}
 <br>
 <button type="submit">Submit</button>
    <br> If you already have an account please <a href="{% url 'login' %}"> Login</a>
-</form>
+</form> -->
 
 {% endblock content%}

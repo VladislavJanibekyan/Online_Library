@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'languages',
     'crispy_forms',
+    'star_ratings',
 ]
 
 MIDDLEWARE = [

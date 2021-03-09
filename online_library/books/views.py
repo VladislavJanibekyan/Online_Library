@@ -49,7 +49,7 @@ def home(request):
     except EmptyPage:
         users = paginator.page(paginator.num_pages)
 
-    return render(request, 'books/books_home.html', {'users': users})
+    return render(request, 'books/books_home.html', {'books': book[1:6]})
 
 
 def about(request):
@@ -69,4 +69,25 @@ def book_download(request, pk):
         user_profile.books.add(specific_book)
         user_profile.save()
     return render(request, 'books/book_download.html', {'book': specific_book})
+
+@login_required()
+def download(request,path):
+    file_path = os.path.join(settings.MEDIA_ROOT, path)
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type='application/pdf_file')
+            response['Content-Disposition']='inline;filename='+os.path.basename(file_path)
+            return response
+    raise Http404
+
+class CategoryView(ListView):
+    model = Book
+    template_name = 'books/category.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Book.objects.filter(
+            Q(category=query)
+        )
+        return object_list
 

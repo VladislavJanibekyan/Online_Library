@@ -2,7 +2,14 @@
 {% block content%}
 {% load crispy_forms_tags %}
 
-<h1 align="center">Your Profile info</h1>
+
+
+<!--h2 class="universal-h2 universal-h2-bckg">Profile Info</h2>-->
+<center>
+<footer class="site-footer">
+		<div class="site-container">
+
+		<h1>Profile Info</h1>
     <p align="center">
     <br>
 
@@ -16,7 +23,11 @@ First name: {{ prof.first_name }}
     <br>
     Username: {{ request.user.username }}
   <br>
-    <a href="{% url 'profileupdate' %}" > <button>Update</button></a>
+    <a href="{% url 'profileupdate' %}" > <button class="brand-button">Update</button></a>
     </p>
+  </div>
+
+
+
 
 {% endblock content %}

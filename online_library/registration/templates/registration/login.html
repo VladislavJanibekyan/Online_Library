@@ -1,6 +1,25 @@
 {% extends 'books/base.html'%}
 {% block content%}
 {% load crispy_forms_tags %}
+
+
+	<footer class="site-footer">
+		<div class="site-container">
+			<div class="footer-inner">
+               	<div class="footer-contact-form">
+					<h5>Please Log in</h5>
+					<form method="post" class="contact-form">
+                       {% csrf_token %}
+						{{form|crispy}}
+                       <br>
+                   		<input type="submit" name="submit" value="Submit" class="submit-button">
+                         <br>  If you don't have an account please<a href="{% url 'Registration_home'%}" > Sign up</a>
+					</form>
+				</div>
+			</div>
+		</div>
+
+<!--
 <h1>Please Login</h1>
 <br>
 <form method="post">
@@ -8,5 +27,5 @@
 {{form|crispy}}
  <br>   <button type="submit">login</button>
  If you don't have an account please<a href="{% url 'Registration_home'%}" > Sign up</a>
-</form>
+</form> -->
 {% endblock content %}

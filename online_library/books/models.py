@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from languages.fields import LanguageField
+from PIL import Image
+
 GROUP_CHOICES = (
     ("0", '0+'),
     ("1", '7+'),
@@ -26,6 +28,15 @@ class Book(models.Model):
     def __str__(self):
         return f"{self.title}|-|{self.category}|-|{self.author}"
 
+    def save(self):
+        super().save()
+
+        img = Image.open(self.book_image.path)
+
+        if img.height>300 or img.width>300:
+            output_size=(300,300)
+            img.thumbnail(output_size)
+            img.save(self.book_image.path)
 
 
 
