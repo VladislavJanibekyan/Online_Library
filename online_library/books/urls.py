@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import  SearchResultsView
+from .views import  SearchResultsView, AdvancedSearch
 
 
 urlpatterns =[
@@ -8,4 +8,6 @@ urlpatterns =[
     path('about/', views.about, name="about"),
     path('book_view/<int:pk>', views.book_view, name="book_view"),
     path('search/', SearchResultsView.as_view(), name='search_results'),
+    path('advanced/', AdvancedSearch.as_view(), name='advanced_search'),
+
 ]

@@ -1,10 +1,18 @@
 {% extends 'books/base.html' %}
 {% block content %}
+<title> Advanced search </title>
 <h1>Search Results</h1>
-    <form action="{% url 'search_results' %}" method="get" >
-  <input name="q" type="text" placeholder="Search...">
+<br>
+    <form action="{% url 'advanced_search' %}" method="get" >
+  <input name="q" type="text" placeholder="Title...">
+        <br>
+        <br>
+        <input name="q" type="text" placeholder="Author...">
+        <br>
+        <br>
+        <input name="q" type="text" placeholder="Category...">
+
     <button> Search </button>
-        <h3>For advanced search <a href="{% url 'advanced_search' %}">click here</a></h3>
     </form>
     <br>
 <ul>

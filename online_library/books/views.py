@@ -6,7 +6,8 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView
 from django.db.models import Q
-from django.contrib import messages
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 
 
@@ -21,11 +22,32 @@ class SearchResultsView(ListView):
         )
         return object_list
 
+class AdvancedSearch(ListView):
+    model = Book
+    template_name = 'books/advanced_search.html'
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Book.objects.filter(
+            Q(title__icontains= query) )
+
+        return object_list
+
+
 
 def home(request):
     book = Book.objects.all()
+    page = request.GET.get('page', 1)
+    paginator = Paginator(book, 2)
+    try:
+        users = paginator.page(page)
+    except PageNotAnInteger:
+        users = paginator.page(1)
+    except EmptyPage:
+        users = paginator.page(paginator.num_pages)
 
-    return render(request, 'books/books_home.html', {'books': book })
+    return render(request, 'books/books_home.html', {'users': users})
+
+
 
 def about(request):
     return render(request, 'books/about.html')
