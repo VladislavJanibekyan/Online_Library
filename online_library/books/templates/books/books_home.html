@@ -3,8 +3,10 @@
 <h1 align="center"> Online Library </h1>
 <form action="{% url 'search_results' %}" method="get" >
   <input name="q" type="text" placeholder="Search...">
-    <button> Search </button>
 
+
+    {{ form.as_table }}
+    <button> Search </button>
 </form>
 
 <br>
@@ -23,12 +25,12 @@
         {% for book in users %}
         <tr>
 
-            <td>{{book.title}}</td>
-            <td>{{book.author}}</td>
-            <td>{{book.category}}</td>
-            <td>{{book.language}}</td>
-            <td>{{book.publish_year}}</td>
-            <td>{{book.get_age_group_display}}</td>
+            <td><a href="{% url 'book_view' book.id %}">{{book.title}}</a></td>
+            <td><a href="{% url 'book_view' book.id %}">{{book.author}}</a></td>
+            <td><a href="{% url 'book_view' book.id %}">{{book.category}}</a></td>
+            <td><a href="{% url 'book_view' book.id %}">{{book.language}}</a></td>
+            <td><a href="{% url 'book_view' book.id %}">{{book.publish_year}}</a></td>
+            <td><a href="{% url 'book_view' book.id %}">{{book.get_age_group_display}}</a></td>
             <td><a href="{% url 'book_view' book.id %}"> more</a></td>
 
         </tr>
